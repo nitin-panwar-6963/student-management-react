@@ -1,0 +1,33 @@
+.container {
+  width: 850px;
+  margin: auto;
+  font-family: Arial;
+}
+
+.form, .card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 6px;
+}
+
+.form input, .card input, .search, .filter {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+}
+
+button {
+  padding: 7px 12px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+.card {
+  background: #f7f7f7;
+}
+
