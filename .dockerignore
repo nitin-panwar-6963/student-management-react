@@ -1,0 +1,53 @@
+# Git
+.git/
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Node.js
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Jenkins
+Jenkinsfile
+
+# Kubernetes
+deployment.yaml
+service.yaml
+k8s/
+kubernetes/
+
+# Docker Compose
+docker-compose.yml
+docker-compose.yaml
+
+# OS files
+.DS_Store
+Thumbs.db
