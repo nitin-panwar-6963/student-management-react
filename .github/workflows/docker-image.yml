@@ -3,14 +3,17 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
@@ -31,6 +34,7 @@ jobs:
   trivy-scanning:
     runs-on: ubuntu-latest
     needs: build
+
     steps:
       - name: Download the artifact
         uses: actions/download-artifact@v4
@@ -51,9 +55,11 @@ jobs:
 
   tag-and-push:
     runs-on: ubuntu-latest
-    needs: [build, trivy-scanning]
-    # Do not push images from pull requests
+    needs:
+      - build
+      - trivy-scanning
     if: github.event_name != 'pull_request'
+
     steps:
       - name: Download the image artifact
         uses: actions/download-artifact@v4
@@ -64,7 +70,7 @@ jobs:
         run: docker load -i image.tar
 
       - name: Tag the image
-        run: docker image tag react-app:latest ${{ secrets.DOCKERUSER }}/react-app:latest
+        run: docker image tag react-app:latest "${{ secrets.DOCKERUSER }}/react-app:latest"
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -73,4 +79,4 @@ jobs:
           password: ${{ secrets.DOCKERAPI }}
 
       - name: Push the Docker image
-        run: docker push ${{ secrets.DOCKERUSER }}/react-app:latest
+        run: docker push "${{ secrets.DOCKERUSER }}/react-app:latest"
