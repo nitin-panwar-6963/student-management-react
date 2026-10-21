@@ -1,4 +1,4 @@
-```dockerfile
+
 # Use Node.js 24 LTS Alpine
 FROM node:24-alpine
 
@@ -16,4 +16,4 @@ COPY . .
 EXPOSE 3000
 
 CMD ["npm", "start"]
-```
+
