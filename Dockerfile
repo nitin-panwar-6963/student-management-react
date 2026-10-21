@@ -7,13 +7,12 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies without requiring package-lock.json
+RUN npm install
 
-# Copy application source
+# Copy application code
 COPY . .
 
 EXPOSE 3000
 
 CMD ["npm", "start"]
-
